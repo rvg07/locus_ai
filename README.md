@@ -3,5 +3,5 @@
 collaborators:
 - Matteo Colletti,
 - Stefano Iacono,
-- Eodardo Maxia,
+- Edoardo Maxia,
 - James Ravago
