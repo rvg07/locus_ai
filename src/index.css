@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth focus ring for accessibility */
+@layer utilities {
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500/50 focus-visible:ring-offset-white;
+  }
+}
+
+/* App background and font smoothing */
+:root { color-scheme: light; }
+
+html, body, #root {
+  height: 100%;
+}
+
+body { @apply bg-surface-50 text-zinc-800 antialiased; }
