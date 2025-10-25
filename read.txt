@@ -1,0 +1,29 @@
+docker-compose exec db mysql -u dev_user -p
+
+use locus_ai
+
+mysql> show tables;
++--------------------+
+| Tables_in_locus_ai |
++--------------------+
+| activity_log       |
+| events             |
+| generated_content  |
+| tasks              |
+| user_preferences   |
+| users              |
++--------------------+
+6 rows in set (0.00 sec)
+
+mysql> select * from users;
+
+
+INSERT INTO tasks (user_id, title, description, priority, status) 
+VALUES (1, 'Finalizzare la presentazione per il cliente', 'Rivedere le slide 4, 7 e 12 e aggiungere le statistiche finali.', 'high', 'to_do');
+
+
+INSERT INTO tasks (user_id, title, description, priority, status) 
+VALUES (1, 'Rispondere alle email del team di marketing', 'Controllare la casella di posta e rispondere alle richieste pendenti.', 'medium', 'to_do');
+
+INSERT INTO tasks (user_id, title, description, priority, status) 
+VALUES (1, 'Inviare report settimanale', 'Report inviato ieri.', 'high', 'completato');
