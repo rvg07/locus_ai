@@ -10,6 +10,7 @@ import InboxPanel from './components/InboxPanel.jsx'
 import ChatView from './components/ChatView.jsx'
 import SupportButton from './components/SupportButton.jsx'
 import NotificationAlert from './components/NotificationAlert.jsx'
+import BackButton from './components/BackButton.jsx'
 
 export default function App() {
   const [message, setMessage] = useState('')
@@ -43,7 +44,12 @@ export default function App() {
 
       <main className="flex-1">
         {chatOpen ? (
-          <ChatView initialMessage={chatInitialMessage} />
+          <>
+            <div className="mx-auto max-w-5xl px-4 pt-4 sm:pt-6">
+              <BackButton onClick={() => setChatOpen(false)} label="Torna alla schermata principale" />
+            </div>
+            <ChatView initialMessage={chatInitialMessage} onExit={() => setChatOpen(false)} />
+          </>
         ) : (
           <div className="mx-auto max-w-5xl px-4 pt-28 sm:pt-44 pb-16 sm:pb-20">
             <p className="text-center text-lg sm:text-2xl font-medium text-zinc-600 mb-8 sm:mb-12">
