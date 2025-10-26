@@ -233,15 +233,15 @@ La tua giornata richiede una gestione strategica per evitare sovraccarico. Ecco 
 ---
 
 ### **Pomeriggio: Gestisci i meeting e integra pause**  
-- **13:30–14:00**: I meeting consecutivi sui budget (Q25, Q4, Q10) potrebbero essere faticosi. **Dedica 5 minuti di pausa tra l’ultimo meeting del pranzo (13:30) e il primo dell’ora di cena (14:00)** per respirare e riorganizzare le priorità.  
-- **14:00–15:00**: Concentrati sui meeting che richiedono interazione diretta (es. preparazione del pitch) e sulla **prova tecnica finale** (14:15). Se ti senti rallentare, chiedi di anticipare di 10 minuti la prossima attività per guadagnare spazio.  
-- **15:00–16:00**: Se hai completato le slide e le demo, dedica questo slot a rispondere a email o a rivedere i punti critici dell’Hackathon. Se i meeting ti stanno esaurendo, fai una pausa di 10 minuti prima dell’incontro su Q10 alle 16:00.  
+- **14:30–15:00**: I meeting consecutivi sui budget (Q25, Q4, Q10) potrebbero essere faticosi. **Dedica 5 minuti di pausa tra l’ultimo meeting del pranzo (13:30) e il primo dell’ora di cena (14:00)** per respirare e riorganizzare le priorità.  
+- **15:00–16:00**: Concentrati sui meeting che richiedono interazione diretta (es. preparazione del pitch) e sulla **prova tecnica finale** (14:15). Se ti senti rallentare, chiedi di anticipare di 10 minuti la prossima attività per guadagnare spazio.  
+- **16:00–17:00**: Se hai completato le slide e le demo, dedica questo slot a rispondere a email o a rivedere i punti critici dell’Hackathon. Se i meeting ti stanno esaurendo, fai una pausa di 10 minuti prima dell’incontro su Q10 alle 16:00.  
 
 ---
 
 ### **Fine giornata: Chiudi con ordine**  
-- **16:00–17:00**: Valuta i feedback dal focus group e organizza il lavoro da completare a casa (es. ultimare le slide).  
-- **17:30–18:00**: Dedicati all’annuncio dei finalisti. Se hai energia, usa il tempo per un breve resoconto su cosa hai concluso oggi.  
+- **17:00–18:00**: Valuta i feedback dal focus group e organizza il lavoro da completare a casa (es. ultimare le slide).  
+- **18:00–18:30**: Dedicati all’annuncio dei finalisti. Se hai energia, usa il tempo per un breve resoconto su cosa hai concluso oggi.  
 
 ---
 
