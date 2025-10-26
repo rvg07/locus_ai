@@ -90,9 +90,7 @@ export default function App() {
         )}
       </main>
 
-      <footer className="border-t border-zinc-200 py-6 text-center text-xs text-zinc-500">
-        Progetto per hackaton: interfaccia semplice e accessibile.
-      </footer>
+      {/* Footer removed per request */}
       <SupportButton />
     </div>
   )

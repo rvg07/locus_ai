@@ -29,18 +29,9 @@ export default function ChatView({ initialMessage, onExit }) {
   const listRef = useRef(null)
   const [typing, setTyping] = useState(false)
   const [pending, setPending] = useState(false)
-  const [footerSpace, setFooterSpace] = useState(0)
-
-  // Measure footer height to add extra bottom space equal to footer
-  useEffect(() => {
-    const measure = () => {
-      const f = document.querySelector('footer')
-      setFooterSpace(f ? Math.ceil(f.getBoundingClientRect().height) : 0)
-    }
-    measure()
-    window.addEventListener('resize', measure)
-    return () => window.removeEventListener('resize', measure)
-  }, [])
+  const [inputBarSpace, setInputBarSpace] = useState(0)
+  const inputBarRef = useRef(null)
+  const isEmpty = messages.length === 0 && !typing
 
   useEffect(() => {
     const el = listRef.current
@@ -72,6 +63,17 @@ export default function ChatView({ initialMessage, onExit }) {
     return () => abort.abort()
   }, [messages])
 
+  // Measure sticky input bar height so the empty-state can sit just above it
+  useEffect(() => {
+    const measure = () => {
+      const h = inputBarRef?.current ? Math.ceil(inputBarRef.current.getBoundingClientRect().height) : 0
+      setInputBarSpace(h)
+    }
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
+
   const send = (text) => {
     const content = (text ?? input).trim()
     if (!content) return
@@ -85,9 +87,12 @@ export default function ChatView({ initialMessage, onExit }) {
   return (
     <section className="flex-1 flex flex-col">
       <div ref={listRef} className="flex-1 overflow-y-auto px-4">
-        <div className="mx-auto max-w-3xl min-h-full flex flex-col justify-end pt-6 pb-36 sm:pb-48">
+        <div
+          className="mx-auto max-w-3xl min-h-full flex flex-col justify-end pt-6"
+          style={{ paddingBottom: inputBarSpace }}
+        >
           <div className="space-y-4">
-          {messages.length === 0 && (
+          {isEmpty && (
             <div className="text-center text-zinc-500 text-sm">Inizia una conversazione per vedere i messaggi qui.</div>
           )}
           {messages.map((m, idx) => (
@@ -110,13 +115,12 @@ export default function ChatView({ initialMessage, onExit }) {
               </AssistantBubble>
             </div>
           )}
-          {/* Extra spacer equal to footer height to further lift content from bottom */}
-          <div style={{ height: footerSpace }} aria-hidden />
+          {/* Footer spacer removed (footer no longer present) */}
           </div>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="sticky bottom-0 inset-x-0 bg-gradient-to-t from-white/80 to-white/20 py-3 px-4">
+      <form ref={inputBarRef} onSubmit={handleSubmit} className="fixed bottom-0 inset-x-0 z-30 bg-gradient-to-t from-white/80 to-white/20 pt-0 pb-0 px-4">
         <div className="mx-auto max-w-3xl">
           <div className="w-full flex items-center gap-2 rounded-full bg-white/60 supports-[backdrop-filter]:bg-white/50 backdrop-blur-md backdrop-saturate-150 border border-white/60 ring-1 ring-inset ring-white/40 shadow-lg px-5 py-3">
             <input

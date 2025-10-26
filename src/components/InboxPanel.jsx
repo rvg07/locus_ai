@@ -26,7 +26,7 @@ function KindBadge({ kind = 'info' }) {
 }
 
 export default function InboxPanel() {
-  const { items, inboxOpen, closeInbox, markRead, markAllRead } = useNotifications()
+  const { items, inboxOpen, closeInbox, markRead, markAllRead, removeNotification } = useNotifications()
   const [tab, setTab] = useState('all') // 'all' | 'unread'
   const list = useMemo(() => tab === 'unread' ? items.filter(i => !i.read) : items, [tab, items])
   const overlayRef = useRef(null)
@@ -65,25 +65,37 @@ export default function InboxPanel() {
             <ul className="space-y-2">
               {list.map(item => (
                 <li key={item.id}>
-                  <button
-                    onClick={() => markRead(item.id)}
-                    className={classNames('w-full text-left rounded-xl border border-white/60 ring-1 ring-inset ring-white/40 bg-white/60 supports-[backdrop-filter]:bg-white/50 backdrop-blur-md backdrop-saturate-150 shadow-lg hover:shadow-xl focus-ring px-3 py-3')}
-                    aria-label={`Apri notifica: ${item.title}`}
+                  <div className={classNames('relative w-full text-left rounded-xl border border-white/60 ring-1 ring-inset ring-white/40 bg-white/60 supports-[backdrop-filter]:bg-white/50 backdrop-blur-md backdrop-saturate-150 shadow-lg hover:shadow-xl')}
                   >
-                    <div className="flex items-start gap-3">
-                      <div className="pt-0.5">
-                        <KindBadge kind={item.kind} />
-                      </div>
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center gap-2">
-                          <p className="font-medium text-sm text-zinc-900 truncate">{item.title}</p>
-                          {!item.read && <span className="inline-block h-2 w-2 rounded-full bg-blue-600" aria-hidden />}
+                    <button
+                      onClick={() => markRead(item.id)}
+                      className={classNames('w-full text-left px-3 py-3 rounded-xl focus-ring')}
+                      aria-label={`Apri notifica: ${item.title}`}
+                    >
+                      <div className="flex items-start gap-3">
+                        <div className="pt-0.5">
+                          <KindBadge kind={item.kind} />
                         </div>
-                        <p className="text-sm text-zinc-600 line-clamp-2">{item.body}</p>
-                        <div className="mt-1 text-[11px] text-zinc-500"><TimeAgo ts={item.ts} /></div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center gap-2">
+                            <p className="font-medium text-sm text-zinc-900 truncate">{item.title}</p>
+                            {!item.read && <span className="inline-block h-2 w-2 rounded-full bg-blue-600" aria-hidden />}
+                          </div>
+                          <p className="text-sm text-zinc-600 line-clamp-2">{item.body}</p>
+                          <div className="mt-1 text-[11px] text-zinc-500"><TimeAgo ts={item.ts} /></div>
+                        </div>
                       </div>
-                    </div>
-                  </button>
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); removeNotification(item.id) }}
+                      className="absolute top-1.5 right-1.5 h-7 w-7 grid place-items-center rounded-full text-zinc-500 hover:text-red-600 hover:bg-red-50 focus-ring"
+                      aria-label="Elimina notifica"
+                      title="Elimina"
+                      type="button"
+                    >
+                      ×
+                    </button>
+                  </div>
                 </li>
               ))}
             </ul>
