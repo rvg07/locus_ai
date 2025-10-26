@@ -215,12 +215,93 @@ Oggi non è un giorno pieno di richieste complesse, quindi goditi il momento di 
       const notif = existing || {
         id: 'daily-plan-alert',
         title: "Piano d'azione per oggi",
-        body,
+        body: `**Piano d'azione per oggi**  
+
+La tua giornata richiede una gestione strategica per evitare sovraccarico. Ecco un piano strutturato per ottimizzare la produttività e il recupero:  
+
+---
+
+### **Mattina: Focalizzati su task ad alta priorità**  
+- **09:00–11:00**: Dedica il tuo periodo più produttivo (09:00–12:00) alle **dimostrazioni per il cliente Oracle** e alla **preparazione delle slide per l’Hackathon 2025**. Inizia con le attività che richiedono creatività e attenzione, come la struttura del pitch e il contenuto delle slide.  
+- **11:00–12:00**: Continua con la **prova tecnica delle presentazioni** (11:15) e la **discussione del budget Q8/Q5** (09:00–11:00). Se i meeting consecutivi ti sembrano pesanti, fai una breve pausa di 5–10 minuti tra una discussione e l’altra per ricaricare.  
+
+---
+
+### **Mezzogiorno: Strizza un occhio al recupero**  
+- **12:00–13:00**: Pranzo e pausa obbligata. Usa il pranzo per staccare mentalmente. Se hai tempo extra, riguarda velocemente i punti chiave delle slide o della demo per fissarli in mente.  
+
+---
+
+### **Pomeriggio: Gestisci i meeting e integra pause**  
+- **12:30–13:00**: I meeting consecutivi sui budget (Q25, Q4, Q10) potrebbero essere faticosi. **Dedica 5 minuti di pausa tra l’ultimo meeting del pranzo (12:30) e il primo dell’ora di cena (13:00)** per respirare e riorganizzare le priorità.  
+- **13:00–14:00**: Concentrati sui meeting che richiedono interazione diretta (es. preparazione del pitch) e sulla **prova tecnica finale** (13:15). Se ti senti rallentare, chiedi di anticipare di 10 minuti la prossima attività per guadagnare spazio.  
+- **14:00–15:00**: Se hai completato le slide e le demo, dedica questo slot a rispondere a email o a rivedere i punti critici dell’Hackathon. Se i meeting ti stanno esaurendo, fai una pausa di 10 minuti prima dell’incontro su Q10 alle 15:00.  
+
+---
+
+### **Fine giornata: Chiudi con ordine**  
+- **15:00–16:00**: Valuta i feedback dal focus group e organizza il lavoro da completare a casa (es. ultimare le slide).  
+- **16:30–17:00**: Dedicati all’annuncio dei finalisti. Se hai energia, usa il tempo per un breve resoconto su cosa hai concluso oggi.  
+
+---
+
+### **Consigli chiave**  
+1. **Ottimizza il focus**: Se i meeting ti distraggono, blocca 15 minuti al mattino e 15 al pomeriggio per avanzare su task critici (es. Oracle demo).  
+2. **Pausa obbligata**: Tra i meeting 12:30–13:00, prendi 5 minuti di camminata o di stretching.  
+3. **Priorità alle slide**: Se rimani indietro, concentra energia sull’Hackathon 2025_v1, poiché hanno tag “urgentemente”.  
+
+---
+
+**Ricorda**: La tua energia si rigenera quando sei consapevole del tuo ritmo. Ogni task completato ti avvicina al successo. Ce la farai, un passo alla volta. 💪`,
         kind: 'calendar',
         ts: Date.now(),
         read: false,
       }
-      if (!existing) add(notif)
+      if (!existing) {
+        add(notif)
+      } else {
+        setItems(prev => prev.map(i => i.id === 'daily-plan-alert' ? {
+          ...i,
+          body: `**Piano d'azione per oggi**  
+
+La tua giornata richiede una gestione strategica per evitare sovraccarico. Ecco un piano strutturato per ottimizzare la produttività e il recupero:  
+
+---
+
+### **Mattina: Focalizzati su task ad alta priorità**  
+- **09:00–11:00**: Dedica il tuo periodo più produttivo (09:00–12:00) alle **dimostrazioni per il cliente Oracle** e alla **preparazione delle slide per l’Hackathon 2025**. Inizia con le attività che richiedono creatività e attenzione, come la struttura del pitch e il contenuto delle slide.  
+- **11:00–12:00**: Continua con la **prova tecnica delle presentazioni** (11:15) e la **discussione del budget Q8/Q5** (09:00–11:00). Se i meeting consecutivi ti sembrano pesanti, fai una breve pausa di 5–10 minuti tra una discussione e l’altra per ricaricare.  
+
+---
+
+### **Mezzogiorno: Strizza un occhio al recupero**  
+- **12:00–13:00**: Pranzo e pausa obbligata. Usa il pranzo per staccare mentalmente. Se hai tempo extra, riguarda velocemente i punti chiave delle slide o della demo per fissarli in mente.  
+
+---
+
+### **Pomeriggio: Gestisci i meeting e integra pause**  
+- **12:30–13:00**: I meeting consecutivi sui budget (Q25, Q4, Q10) potrebbero essere faticosi. **Dedica 5 minuti di pausa tra l’ultimo meeting del pranzo (12:30) e il primo dell’ora di cena (13:00)** per respirare e riorganizzare le priorità.  
+- **13:00–14:00**: Concentrati sui meeting che richiedono interazione diretta (es. preparazione del pitch) e sulla **prova tecnica finale** (13:15). Se ti senti rallentare, chiedi di anticipare di 10 minuti la prossima attività per guadagnare spazio.  
+- **14:00–15:00**: Se hai completato le slide e le demo, dedica questo slot a rispondere a email o a rivedere i punti critici dell’Hackathon. Se i meeting ti stanno esaurendo, fai una pausa di 10 minuti prima dell’incontro su Q10 alle 15:00.  
+
+---
+
+### **Fine giornata: Chiudi con ordine**  
+- **15:00–16:00**: Valuta i feedback dal focus group e organizza il lavoro da completare a casa (es. ultimare le slide).  
+- **16:30–17:00**: Dedicati all’annuncio dei finalisti. Se hai energia, usa il tempo per un breve resoconto su cosa hai concluso oggi.  
+
+---
+
+### **Consigli chiave**  
+1. **Ottimizza il focus**: Se i meeting ti distraggono, blocca 15 minuti al mattino e 15 al pomeriggio per avanzare su task critici (es. Oracle demo).  
+2. **Pausa obbligata**: Tra i meeting 12:30–13:00, prendi 5 minuti di camminata o di stretching.  
+3. **Priorità alle slide**: Se rimani indietro, concentra energia sull’Hackathon 2025_v1, poiché hanno tag “urgentemente”.  
+
+---
+
+**Ricorda**: La tua energia si rigenera quando sei consapevole del tuo ritmo. Ogni task completato ti avvicina al successo. Ce la farai, un passo alla volta. 💪`,
+        } : i))
+      }
       // Delay a tick to ensure the portal is mounted
       setTimeout(() => showAlertFor(notif), 50)
       planShownRef.current = true
